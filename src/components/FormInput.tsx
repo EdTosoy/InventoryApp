@@ -1,6 +1,5 @@
 import React from "react";
 import { UseFormRegisterReturn } from "react-hook-form";
-import DatePicker from "react-date-picker";
 
 type FormInputProps = {
   label: string;

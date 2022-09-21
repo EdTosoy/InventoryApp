@@ -1,5 +1,6 @@
 import { createContext, useState } from "react";
 import { InventoryInferface } from "../types/Inventory";
+import { getLocallyStoredValues } from "../utils/getLocallyStoredValues";
 
 type ContextProps = {
   inventoryItems: InventoryInferface[];
@@ -39,8 +40,9 @@ type AppProviderProps = {
 };
 
 export const AppProvider = ({ children }: AppProviderProps) => {
+  const storedValues = getLocallyStoredValues();
   const [inventoryItems, setInventoryItems] = useState<InventoryInferface[]>(
-    []
+    storedValues || []
   );
 
   const addItem = (

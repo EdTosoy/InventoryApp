@@ -1,4 +1,5 @@
 import { createContext, useState } from "react";
+import { InventoryInferface } from "../types/Inventory";
 
 type ContextProps = {
   inventoryItems: InventoryInferface[];
@@ -24,17 +25,6 @@ type ContextProps = {
   removeItem: (id: number) => void;
 };
 
-interface InventoryInferface {
-  id: number;
-  productName: string;
-  stockDueDate: string;
-  supplierName: string;
-  quantity: number | string;
-  costPrice: number | string;
-  amount: number | string;
-  isEditable: boolean;
-}
-
 export const AppContext = createContext<ContextProps>({
   inventoryItems: [],
   setInventoryItems: () => {},
@@ -44,11 +34,11 @@ export const AppContext = createContext<ContextProps>({
   removeItem: () => {},
 });
 
-type Props = {
+type AppProviderProps = {
   children: React.ReactNode;
 };
 
-export const AppProvider = ({ children }: Props) => {
+export const AppProvider = ({ children }: AppProviderProps) => {
   const [inventoryItems, setInventoryItems] = useState<InventoryInferface[]>(
     []
   );

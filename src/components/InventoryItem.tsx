@@ -1,10 +1,18 @@
 import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { AppContext } from "../contextAPI/inventory";
+import { ItemFormInput } from "../types";
 import FormInput from "./FormInput";
-import { NewItemFormInput } from "./NewItemForm";
+import {
+  productNameFieldName,
+  quantityFieldName,
+  costPriceFieldName,
+  stockDueDateFieldName,
+  supplierNameFieldName,
+  amountFieldName,
+} from "../contants";
 
-type Props = {
+type InventoryItemProps = {
   id: number;
   productName: string;
   stockDueDate: string;
@@ -24,8 +32,8 @@ function InventoryItem({
   stockDueDate,
   supplierName,
   isEditable,
-}: Props) {
-  const { register, watch } = useForm<NewItemFormInput>();
+}: InventoryItemProps) {
+  const { register, watch } = useForm<ItemFormInput>();
   const { toggleItemIsEditable, updateItem, removeItem } =
     useContext(AppContext);
   const fields = watch();
@@ -44,37 +52,37 @@ function InventoryItem({
     <div className="flex gap-5 justify-center">
       <FormInput
         label="Product Name"
-        register={register("productName")}
+        register={register(productNameFieldName)}
         value={isEditable ? fields.productName : productName}
         isDisabled={!isEditable}
       />
       <FormInput
         label="Quantity"
-        register={register("quantity")}
+        register={register(quantityFieldName)}
         value={isEditable ? fields.quantity : quantity}
         isDisabled={!isEditable}
       />
       <FormInput
         label="Cost Price"
-        register={register("costPrice")}
+        register={register(costPriceFieldName)}
         value={isEditable ? fields.costPrice : costPrice}
         isDisabled={!isEditable}
       />
       <FormInput
         label="Stock Due Date"
-        register={register("stockDueDate")}
+        register={register(stockDueDateFieldName)}
         value={isEditable ? fields.stockDueDate : stockDueDate}
         isDisabled={!isEditable}
       />
       <FormInput
         label="Supplier Name"
-        register={register("supplierName")}
+        register={register(supplierNameFieldName)}
         value={isEditable ? fields.supplierName : supplierName}
         isDisabled={!isEditable}
       />
       <FormInput
         label="Amount"
-        register={register("amount")}
+        register={register(amountFieldName)}
         value={isEditable ? fields.amount : amount}
         isDisabled={!isEditable}
       />

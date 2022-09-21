@@ -1,33 +1,23 @@
 import React, { useContext } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { AppContext } from "../contextAPI/inventory";
+import { ItemFormInput } from "../types";
 import FormInput from "./FormInput";
+import {
+  amountFieldName,
+  costPriceFieldName,
+  itemInputDefaultValues,
+  productNameFieldName,
+  quantityFieldName,
+  stockDueDateFieldName,
+  supplierNameFieldName,
+} from "../contants";
 
-type Props = {};
-
-export interface NewItemFormInput {
-  productName: string;
-  stockDueDate: string;
-  supplierName: string;
-  quantity: number | string;
-  costPrice: number | string;
-  amount: number | string;
-}
-
-const defaultValues = {
-  productName: "",
-  stockDueDate: "",
-  supplierName: "",
-  quantity: "",
-  costPrice: "",
-  amount: "",
-};
-
-function NewItemForm({}: Props) {
+function NewItemForm() {
   const { addItem } = useContext(AppContext);
-  const { register, handleSubmit, watch, reset } = useForm<NewItemFormInput>({
+  const { register, handleSubmit, watch, reset } = useForm<ItemFormInput>({
     mode: "onChange",
-    defaultValues,
+    defaultValues: itemInputDefaultValues,
   });
 
   const {
@@ -39,7 +29,7 @@ function NewItemForm({}: Props) {
     supplierName,
   } = watch();
 
-  const onSubmit: SubmitHandler<NewItemFormInput> = () => {
+  const onSubmit: SubmitHandler<ItemFormInput> = () => {
     addItem(
       amount,
       costPrice,
@@ -57,12 +47,36 @@ function NewItemForm({}: Props) {
         <h3>Add new item</h3>
       </div>
       <div className="flex gap-5 justify-center">
-        <FormInput label="Product Name" register={register("productName")} />
-        <FormInput label="Quantity" register={register("quantity")} />
-        <FormInput label="Cost Price" register={register("costPrice")} />
-        <FormInput label="Stock Due Date" register={register("stockDueDate")} />
-        <FormInput label="Supplier Name" register={register("supplierName")} />
-        <FormInput label="Amount" register={register("amount")} />
+        <FormInput
+          label="Product Name"
+          register={register(productNameFieldName)}
+          displayLabel
+        />
+        <FormInput
+          label="Quantity"
+          register={register(quantityFieldName)}
+          displayLabel
+        />
+        <FormInput
+          label="Cost Price"
+          register={register(costPriceFieldName)}
+          displayLabel
+        />
+        <FormInput
+          label="Stock Due Date"
+          register={register(stockDueDateFieldName)}
+          displayLabel
+        />
+        <FormInput
+          label="Supplier Name"
+          register={register(supplierNameFieldName)}
+          displayLabel
+        />
+        <FormInput
+          label="Amount"
+          register={register(amountFieldName)}
+          displayLabel
+        />
         <button type="submit">Add Item</button>
       </div>
     </form>

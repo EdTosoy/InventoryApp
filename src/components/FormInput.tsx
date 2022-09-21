@@ -1,7 +1,7 @@
 import React from "react";
 import { UseFormRegisterReturn } from "react-hook-form";
 
-type Props = {
+type FormInputProps = {
   label: string;
   register: UseFormRegisterReturn<string>;
   displayLabel?: boolean;
@@ -15,7 +15,7 @@ function FormInput({
   displayLabel,
   value,
   isDisabled,
-}: Props) {
+}: FormInputProps) {
   return (
     <div>
       {displayLabel && <label>{label}</label>}

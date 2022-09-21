@@ -2,9 +2,7 @@ import React, { useContext } from "react";
 import { AppContext } from "../contextAPI/inventory";
 import InventoryItem from "./InventoryItem";
 
-type Props = {};
-
-function InventoryList({}: Props) {
+function InventoryList() {
   const { inventoryItems } = useContext(AppContext);
 
   return (

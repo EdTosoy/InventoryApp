@@ -80,7 +80,6 @@ export const AppProvider = ({ children }: AppProviderProps) => {
     const selectedItem = newInventoryItems.find(
       (inventoryItem) => inventoryItem.id === id
     );
-    console.log(amount);
     if (selectedItem) {
       selectedItem.amount = amount;
       selectedItem.costPrice = costPrice;

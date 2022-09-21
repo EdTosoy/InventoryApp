@@ -49,54 +49,79 @@ function InventoryItem({
     );
   };
   return (
-    <div className="flex gap-5 justify-center">
-      <FormInput
-        label="Product Name"
-        register={register(productNameFieldName)}
-        value={isEditable ? fields.productName : productName}
-        isDisabled={!isEditable}
-      />
-      <FormInput
-        label="Quantity"
-        register={register(quantityFieldName)}
-        value={isEditable ? fields.quantity : quantity}
-        isDisabled={!isEditable}
-      />
-      <FormInput
-        label="Cost Price"
-        register={register(costPriceFieldName)}
-        value={isEditable ? fields.costPrice : costPrice}
-        isDisabled={!isEditable}
-      />
-      <FormInput
-        label="Stock Due Date"
-        register={register(stockDueDateFieldName)}
-        value={isEditable ? fields.stockDueDate : stockDueDate}
-        isDisabled={!isEditable}
-      />
-      <FormInput
-        label="Supplier Name"
-        register={register(supplierNameFieldName)}
-        value={isEditable ? fields.supplierName : supplierName}
-        isDisabled={!isEditable}
-      />
-      <FormInput
-        label="Amount"
-        register={register(amountFieldName)}
-        value={isEditable ? fields.amount : amount}
-        isDisabled={!isEditable}
-      />
+    <>
+      <td className="p-2">
+        <FormInput
+          label="Product Name"
+          register={register(productNameFieldName)}
+          value={isEditable ? fields.productName : productName}
+          isDisabled={!isEditable}
+        />
+      </td>
+      <td className="p-2">
+        <FormInput
+          label="Quantity"
+          register={register(quantityFieldName)}
+          value={isEditable ? fields.quantity : quantity}
+          isDisabled={!isEditable}
+        />
+      </td>
+      <td className="p-2">
+        <FormInput
+          label="Cost Price"
+          register={register(costPriceFieldName)}
+          value={isEditable ? fields.costPrice : costPrice}
+          isDisabled={!isEditable}
+        />
+      </td>
+      <td className="p-2">
+        <FormInput
+          label="Stock Due Date"
+          register={register(stockDueDateFieldName)}
+          value={isEditable ? fields.stockDueDate : stockDueDate}
+          isDisabled={!isEditable}
+        />
+      </td>
+      <td className="p-3">
+        <FormInput
+          label="Supplier Name"
+          register={register(supplierNameFieldName)}
+          value={isEditable ? fields.supplierName : supplierName}
+          isDisabled={!isEditable}
+        />
+      </td>
+      <td className="p-2">
+        <FormInput
+          label="Amount"
+          register={register(amountFieldName)}
+          value={isEditable ? fields.amount : amount}
+          isDisabled={!isEditable}
+        />
+      </td>
+      <td className="p-2">
+        <div className="flex gap-4">
+          {!isEditable ? (
+            <button onClick={() => toggleItemIsEditable(id)}>
+              <div className="grid place-content-center">
+                <box-icon type="solid" name="edit"></box-icon>
+              </div>
+            </button>
+          ) : (
+            <button onClick={handleOnSave}>
+              <div className="grid place-content-center">
+                <box-icon name="save" type="solid"></box-icon>
+              </div>
+            </button>
+          )}
 
-      <div className="flex gap-4">
-        {!isEditable ? (
-          <button onClick={() => toggleItemIsEditable(id)}>EDIT</button>
-        ) : (
-          <button onClick={handleOnSave}>Save</button>
-        )}
-
-        <button onClick={() => removeItem(id)}>REMOVE</button>
-      </div>
-    </div>
+          <button onClick={() => removeItem(id)}>
+            <div className="grid place-content-center">
+              <box-icon name="trash"></box-icon>
+            </div>
+          </button>
+        </div>
+      </td>
+    </>
   );
 }
 

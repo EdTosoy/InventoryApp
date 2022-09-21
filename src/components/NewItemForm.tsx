@@ -42,11 +42,11 @@ function NewItemForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form onSubmit={handleSubmit(onSubmit)} className="max-w-7xl m-auto mb-14">
       <div>
-        <h3>Add new item</h3>
+        <h3 className="m-4 font-bold text-lg">Add new item</h3>
       </div>
-      <div className="flex gap-5 justify-center">
+      <div className="flex gap-1 justify-around items-end">
         <FormInput
           label="Product Name"
           register={register(productNameFieldName)}
@@ -77,7 +77,12 @@ function NewItemForm() {
           register={register(amountFieldName)}
           displayLabel
         />
-        <button type="submit">Add Item</button>
+        <button
+          type="submit"
+          className="mr-1 rounded-md bg-blue-300 font-bold mb-2 p-2"
+        >
+          Add Item
+        </button>
       </div>
     </form>
   );

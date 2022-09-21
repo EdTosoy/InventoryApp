@@ -1,5 +1,6 @@
 import React from "react";
 import { UseFormRegisterReturn } from "react-hook-form";
+import DatePicker from "react-date-picker";
 
 type FormInputProps = {
   label: string;
@@ -18,11 +19,13 @@ function FormInput({
 }: FormInputProps) {
   return (
     <div>
-      {displayLabel && <label>{label}</label>}
+      {displayLabel && <label className="font-bold ">{label}</label>}
       <input
         {...register}
         value={value}
-        className="block"
+        className={`block my-1 rounded-sm py-2 px-1 w-full   ${
+          isDisabled ? "bg-gray-200" : "border-2"
+        }`}
         disabled={isDisabled}
       />
     </div>
